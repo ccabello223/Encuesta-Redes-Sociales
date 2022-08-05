@@ -1,0 +1,61 @@
+<div fxLayout="row">
+    <h2>Estadisticas</h2>
+    <div class="spacer"></div>
+    <h3>Encuestas contestadas: {{estadEncuesta.cantidad_encuesta}}</h3>
+</div>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayout="row" fxLayoutGap="40px" fxLayout.xs="column">
+
+    <div fxFlex="50" fxLayout="column">
+        <mat-form-field fxFlex="100">
+            <mat-label>Tiempo promedio por red social</mat-label>
+            <mat-select required>
+                <mat-option *ngFor="let red of redes" [value]="red.id" (click)="buscar(red.id)">
+                    {{red.desc}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxFlex="row" fxLayoutGap="20" fxLayout.xs="column">
+
+            <mat-form-field fxFlex="100">
+                <mat-label>Red Social Favorita</mat-label>
+                <input matInput type="text" readonly [value]="estadEncuesta.social_fav">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="100">
+                <mat-label>Red Social Menos Querida</mat-label>
+                <input matInput type="text" readonly [value]="estadEncuesta.social_no_fav">
+            </mat-form-field>
+        </div>
+
+
+        <mat-form-field fxFlex="100">
+            <mat-label>Rango de edad que más use cada red social</mat-label>
+            <mat-select required>
+                <mat-option *ngFor="let edad of edades" 
+                            (click)="buscarEdad(edad)"
+                            [value]="edad">
+                    {{edad}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+
+    <div fxFlex="50" fxLayout="column">
+        <mat-form-field fxFlex="100" *ngIf="tiempo_promedio">
+            <mat-label>Tiempo promedio</mat-label>
+            <input matInput type="text" readonly [value]="tiempo_promedio + ' Horas'">
+        </mat-form-field>
+
+        <div fxLayoutAlign="end">
+            <mat-form-field fxFlex="100" *ngIf="rango_edad">
+                <mat-label>Rango de Edad</mat-label>
+                <input matInput type="text" readonly [value]="rango_edad">
+            </mat-form-field>
+        </div>
+    </div>
+</div>

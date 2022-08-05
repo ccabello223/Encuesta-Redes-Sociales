@@ -1,0 +1,125 @@
+<h1>Encuesta Redes Sociales</h1>
+<mat-divider></mat-divider>
+<br>
+
+<div fxLayoutAlign="center">
+    <div fxFlex="50" fxLayout="column">
+
+        <mat-form-field fxFlex="100">
+            <mat-label>Correo del participante</mat-label>
+            <input matInput
+                    type="email"
+                    required
+                    [(ngModel)]="repuesta.email">
+        </mat-form-field>
+
+        <mat-form-field fxFlex="100">
+            <mat-label>Edad</mat-label>
+            <mat-select [(ngModel)]="repuesta.edades" 
+                        required>
+                <mat-option *ngFor="let edad of edades"
+                            [value]="edad">
+                            {{edad}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="100">
+            <mat-label>sexo</mat-label>
+            <mat-select [(ngModel)]="repuesta.sexo"
+                    required>
+                <mat-option *ngFor="let item of sexo"
+                            [value]="item">
+                            {{item}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field fxFlex="100">
+            <mat-label>Red Social Favorita</mat-label>
+            <mat-select [(ngModel)]="repuesta.social_fav"
+                    required>
+                <mat-option *ngFor="let item of redes"
+                    [value]="item">
+                    {{item}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row" 
+            fxLayoutGap="20px"
+            fxLayout.xs="column">
+
+            <mat-form-field fxFlex="100">
+                <mat-label>Tiempo promedio al día en Facebook (0-60) minutos</mat-label>
+                <input matInput 
+                        type="number"
+                        step="1"
+                        min="0"
+                        max="60"
+                        [(ngModel)]="repuesta.time_on_fc"
+                        required>
+            </mat-form-field>
+    
+            <mat-form-field fxFlex="100">
+                <mat-label>Tiempo promedio al día en WhatsApp (0-60) minutos</mat-label>
+                <input matInput 
+                        type="number"
+                        step="1"
+                        min="0"
+                        max="60"
+                        [(ngModel)]="repuesta.time_on_ws"
+                        required>
+            </mat-form-field>
+
+        </div>
+
+        <div fxLayout="row" 
+            fxLayoutGap="20px"
+            fxLayout.xs="column">
+
+            <mat-form-field fxFlex="100">
+                <mat-label>Tiempo promedio al día en Twitter (0-60) minutos</mat-label>
+                <input matInput 
+                        type="number"
+                        step="1"
+                        min="0"
+                        max="60"
+                        [(ngModel)]="repuesta.time_on_tw"
+                        required>
+            </mat-form-field>
+    
+            <mat-form-field fxFlex="100">
+                <mat-label>Tiempo promedio al día en Instagram (0-60) minutos</mat-label>
+                <input matInput 
+                        type="number"
+                        step="1"
+                        min="0"
+                        max="60"
+                        [(ngModel)]="repuesta.time_on_ig"
+                        required>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field fxFlex="100">
+            <mat-label>Tiempo promedio al día en Tiktok (0-60) minutos</mat-label>
+            <input matInput 
+                    type="number"
+                    step="1"
+                    min="0"
+                    max="60"
+                    [(ngModel)]="repuesta.time_on_tk"
+                    required>
+        </mat-form-field>
+
+        <br>
+
+        <button mat-raised-button 
+                color="primary"
+                (click)="guardar()">
+            <mat-icon>save</mat-icon>
+            Guardar
+        </button>
+
+    </div>
+</div>
